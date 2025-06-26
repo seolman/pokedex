@@ -25,6 +25,11 @@ export function getCommands(): Record<string, CLICommand> {
       description: "Get the previous page of locations",
       callback: commandMapBackward,
     },
+    explore: {
+      name: "explore",
+      description: "explore",
+      callback: commandMapBackward,
+    },
   };
 }
 

@@ -1,6 +1,7 @@
 import { createInterface, type Interface } from "readline";
 import { getCommands } from "./commands.js";
 import { PokeAPI } from "./pokeapi.js";
+import { Cache } from "./pokecache.js";
 
 export type State = {
   readline: Interface;
@@ -16,18 +17,17 @@ export type CLICommand = {
   callback: (state: State) => Promise<void>;
 };
 
-export function initState() {
+export function initState(cacheInterval: number) {
   const readline = createInterface({
     input: process.stdin,
     output: process.stdout,
     prompt: "Pokedex > "
   });
 
-
   return {
     readline: readline,
     commands: getCommands(),
-    pokeAPI: new PokeAPI(),
+    pokeAPI: new PokeAPI(cacheInterval),
     nextLocationsURL: "",
     prevLocationsURL: "",
   };
