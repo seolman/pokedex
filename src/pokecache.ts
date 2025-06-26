@@ -22,7 +22,10 @@ export class Cache {
 
   get<T>(key: string): T | undefined {
     const entry = this.#cache.get(key);
-    return entry?.val;
+    if (entry !== undefined) {
+      return entry.val as T;
+    }
+    return undefined;
   }
 
   #reap() {

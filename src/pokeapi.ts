@@ -28,7 +28,7 @@ export class PokeAPI {
       }
 
       const locations: ShallowLocations = await response.json();
-      this.cache.add<ShallowLocations>(url, locations);
+      this.cache.add(url, locations);
       return locations;
     } catch (err) {
       throw new Error(`Error fetching locations: ${(err as Error).message}`);
@@ -50,7 +50,7 @@ export class PokeAPI {
       }
 
       const location: Location = await response.json();
-      this.cache.add<Location>(url, location);
+      this.cache.add(url, location);
       return location;
     } catch (err) {
       throw new Error(
