@@ -19,5 +19,6 @@ export async function commandCatch(state: State, ...args: string[]) {
   if (!state.pokedex[pokemonName]) {
     state.pokedex[pokemonName] = pokemon;
   }
-  console.log(`${pokemonName} was caught!`);
+  console.log(`${pokemon.name} was caught!`);
+  console.log("You may now inspect it with the inspect command.");
 }
